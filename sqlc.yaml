@@ -1,0 +1,10 @@
+version: "2"
+sql:
+  - engine: "postgresql"
+    queries: "sql"         # folder with SQL queries like users.sql
+    schema: "migrations"   # folder with your CREATE TABLE files
+    gen:
+      go:
+        package: "db"
+        out: "db"
+        emit_json_tags: true
