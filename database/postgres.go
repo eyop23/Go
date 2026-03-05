@@ -14,18 +14,19 @@ var DB *sql.DB
 
 func ConnectPostgres(){
 
-	 db_user:= os.Getenv("DB_USER")
-	 db_password:=os.Getenv("DB_PASSWORD")
-	 database:=os.Getenv("DATABASE")
+	 db_url:= os.Getenv("DB_URL")
+	 fmt.Println(db_url)
+	//  db_password:=os.Getenv("DB_PASSWORD")
+	//  database:=os.Getenv("DATABASE")
 
 
-	connectionString := fmt.Sprintf("postgres://%s:%s@localhost:5432/%s?sslmode=disable",db_user,db_password,database) 
+	// connectionString := fmt.Sprintf("postgres://%s:%s@localhost:5432/%s?sslmode=disable",db_user,db_password,database) 
 
-	fmt.Println("connection string is :", connectionString)
+	// fmt.Println("connection string is :", connectionString)
 
 	// connectionString:="postgres://postgres:postgres@localhost:5432/go_learn?sslmode=disable"
 
-   db,err := sql.Open("postgres",connectionString)
+   db,err := sql.Open("postgres",db_url)
 
    if err != nil {
 	log.Fatal("Cannot open database:", err)
